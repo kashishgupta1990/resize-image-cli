@@ -1,0 +1,20 @@
+{
+  "name": "resize-image-cli",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "bin": {
+    "resize-image": "./app.js"
+  },
+  "license": "ISC",
+  "dependencies": {
+    "async": "^2.5.0",
+    "commander": "^2.11.0",
+    "imagemagick": "^0.1.3",
+    "mkpath": "^1.0.0"
+  }
+}
