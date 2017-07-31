@@ -6,6 +6,7 @@ var async = require('async');
 var mkpath = require('mkpath');
 var program = require('commander');
 var package = require('./package.json');
+var path = require('path');
 var imgResizeTask = [];
 
 // Help Window
