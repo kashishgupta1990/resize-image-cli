@@ -12,7 +12,7 @@ var imgResizeTask = [];
 // Help Window
 program
     .version(package.version)
-    .usage('[ -d destinationFolder ] [ -k SedasdeEEW1231asd213 ] -s sourceFolder ')
+    .usage(' -d destinationFolder -s sourceFolder [-w width] [-h height]')
     .option('-s, --source <source-directory-path>', 'mention the source directory path.')
     .option('-d, --destination <destination-directory-path>', 'mention destination directory path.')
     .option('-w, --width <width>', 'mention required width.')
@@ -32,13 +32,14 @@ option.destinationDir = program.destination || option.destinationDir;
 option.width = program.width || option.width;
 option.height = program.height || option.height;
 
-
-if (option.sourceDir) {
+if(!option.width && !option.height){
+    console.log('Invalid Command\nPlease pass at least one args out of [-w / -h]');
+}else if (option.sourceDir) {
     var sourceStat = fs.lstatSync(option.sourceDir);
     if(sourceStat.isDirectory()){
         //If destination not mentioned
         if(!option.destinationDir){
-            option.destinationDir = path.join(option.sourceDir, 'resize');
+            option.destinationDir = path.join(option.sourceDir, 'resize-image');
         }
         mkpath.sync(option.destinationDir);
 
@@ -54,8 +55,10 @@ if (option.sourceDir) {
                     height: option.height
                 }, function(err, stdout, stderr){
                     if(err){
+                        console.log('Error: ' + imgLink);
                         callback(null, 'Error: ' + imgLink);
                     }else{
+                        console.log('Success: ' + imgLink);
                         callback(null, 'Success: ' + imgLink);
                     }
                 });
@@ -64,12 +67,13 @@ if (option.sourceDir) {
         async.series(imgResizeTask, function (err, data) {
             if(err){
                 console.log('\nError in Resize: ', err);
+            }else {
+                console.log('\n-- Image Resize Task Completed --\n');
             }
-            console.log('\n-- Image Resize completed --\n', data.join('\n'));
         })
     }
 }else{
-    console.log('please mention the source destination.');
+    console.log('Invalid Command\nRun Command: resize-image --help \nFor More Details');
 }
 
 function readImageFilesFromDirectory(dirPath) {

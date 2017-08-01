@@ -1,15 +1,34 @@
 {
   "name": "resize-image-cli",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "",
   "main": "app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "",
   "bin": {
     "resize-image": "./app.js"
   },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kashishgupta1990/resize-image-cli"
+  },
+  "author": {
+    "name": "Kashish Gupta",
+    "email": "kashishguptatech@gmail.com",
+    "url": "http://github.com/kashishgupta/"
+  },
+  "bugs": {
+    "url": "https://github.com/kashishgupta1990/resize-image-cli/issues"
+  },
+  "keywords": [
+    "resize image",
+    "resize jpg",
+    "resize png",
+    "png resize",
+    "jpg resize"
+  ],
+  "homepage": "https://github.com/kashishgupta1990/resize-image-cli#readme",
   "license": "ISC",
   "dependencies": {
     "async": "^2.5.0",
